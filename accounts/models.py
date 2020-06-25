@@ -87,7 +87,6 @@ class AbstractEmailUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(
         _('staff status'), default=False, help_text=_(
             'Designates whether the user can log into this admin site.'))
-    is_verified_member = models.BooleanField(default=False)
     is_active = models.BooleanField(_('active'), default=True, help_text=_(
         'Designates whether this user should be treated as '
         'active. Unselect this instead of deleting accounts.'))
