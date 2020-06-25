@@ -131,7 +131,6 @@ class EmailUser(AbstractEmailUser):
     """
     Concrete class of AbstractEmailUser.
 
-    Use this if you don't need to extend EmailUser.
 
     """
 
