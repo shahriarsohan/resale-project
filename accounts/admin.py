@@ -11,7 +11,11 @@ class EmailUserAdmin(UserAdmin):
     """EmailUser Admin model."""
 
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        # (None, {'fields': ('email', 'password')}),
+        ('Advanced options', {
+            'classes': ('collapse',),
+            'fields': ('email', 'password'),
+        }),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -31,7 +35,7 @@ class EmailUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'is_staff')
+    list_display = ('email', 'is_superuser', 'last_login')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email',)
     ordering = ('email',)
