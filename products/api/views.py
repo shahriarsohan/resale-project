@@ -5,12 +5,12 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from .serializers import (
     UserSerializers,
     MemberSerializers,
-    CategorySerializers
+    ProductsSerializers
 )
 
 from products.models import (
     Member,
-    Category
+    Products
 )
 
 User = get_user_model()
@@ -28,6 +28,6 @@ class MembersListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
 
-class CategoryListAPIView(ListAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializers
+class ProductsListAPIView(ListAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializers

@@ -9,6 +9,10 @@ from resale_projects.utils import unique_slug_generator
 
 User = get_user_model()
 
+'''
+Here i will add custom model manager for advanced custom query
+'''
+
 
 class Member(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,27 +23,14 @@ class Member(models.Model):
         return self.user.email
 
 
-class Category(models.Model):
-    title = models.CharField(max_length=10)
-    slug = models.SlugField(blank=True, null=True)
-
-    class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
-        ordering = ['-id']
-
-    def __str__(self):
-        return self.title
-
-
 class Products(models.Model):
     user = models.ForeignKey(Member, on_delete=models.CASCADE)
-    category = models.OneToOneField(
-        Category, on_delete=models.DO_NOTHING, null=True)
     title = models.CharField(max_length=30)
+    category = models.CharField(max_length=20)
     description = models.TextField(max_length=255)
     slug = models.SlugField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True,
+                              upload_to='media/products/%Y/%m/%d/')
     phone_regex = RegexValidator(
         regex='^(\+\d{1,3})?,?\s?\d{8,13}', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     phone_number = models.CharField(
@@ -54,11 +45,12 @@ class Products(models.Model):
     thana = models.CharField(max_length=10, blank=True, null=True)
     zip_code = models.IntegerField()
     is_sold = models.BooleanField(default=False, blank=True, null=True)
+    featured = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'All Products'
-        ordering = ['-timestamp']
+        ordering = ['id']
 
     def __str__(self):
         return self.title
@@ -70,14 +62,6 @@ def unique_slug_generator_reciever(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(unique_slug_generator_reciever, sender=Products)
-
-
-def unique_category_slug_generator_reciever(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = unique_slug_generator(instance)
-
-
-pre_save.connect(unique_category_slug_generator_reciever, sender=Category)
 
 
 def unique_slug_generator_member_reciever(sender, instance, *args, **kwargs):

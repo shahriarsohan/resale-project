@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 from products.models import (
     Member,
-    Category
+    Products
 )
 
 User = get_user_model()
@@ -36,10 +36,28 @@ class MemberSerializers(serializers.ModelSerializer):
         ]
 
 
-class CategorySerializers(serializers.ModelSerializer):
+class ProductsSerializers(serializers.ModelSerializer):
+    user = MemberSerializers()
+
     class Meta:
-        model = Category
+        model = Products
         fields = [
+            'user',
+            'category',
             'title',
-            'slug'
+            'description',
+            'slug',
+            'image',
+            'phone_number',
+            'timestamp',
+            'product_price',
+            'negotiable',
+            'used',
+            'used_duration',
+            'division',
+            'zilla',
+            'thana',
+            'zip_code',
+            'is_sold',
+            'featured'
         ]
