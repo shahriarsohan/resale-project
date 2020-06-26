@@ -1,0 +1,70 @@
+@import "./bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@1,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,600&display=swap"); */
+
+.navbar-links li,
+.navbar-links li a {
+  font-family: "Montserrat";
+  text-decoration: none;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #24252a;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.navbar-links li {
+  display: inline-block;
+  padding: 0rem 1.2rem;
+}
+
+.navbar-links li a {
+  transition: all 0.3 ease 0s;
+}
+
+.navbar-links li a:hover {
+  color: #e84a5f;
+}
+
+.contact-button {
+  padding: 9px 25px;
+  background-color: #fbd46d;
+  border: none;
+  border-radius: 200px 0px 200px 0px;
+  -moz-border-radius: 200px 0px 200px 0px;
+  -webkit-border-radius: 200px 0px 200px 0px;
+  border: 0px solid #000000;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.contact-button:hover {
+  background-color: #e79c2a;
+  -webkit-box-shadow: 10px 14px 73px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 14px 73px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 14px 73px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* title */
+.title {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #323232;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding-top: 2rem;
+  line-height: 2.5rem;
+}
+/* title */

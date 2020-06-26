@@ -25,7 +25,6 @@ class UsersListAPIView(ListAPIView):
 class MembersListAPIView(ListAPIView):
     queryset = Member.objects.all()
     serializer_class = MemberSerializers
-    permission_classes = [IsAuthenticated]
 
 
 class ProductsListAPIView(ListAPIView):
