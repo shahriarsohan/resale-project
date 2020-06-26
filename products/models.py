@@ -13,21 +13,23 @@ User = get_user_model()
 class Member(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     member = models.BooleanField(default=False, blank=True, null=True)
+    slug = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return self.user.email
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=10)
+    title = models.CharField(max_length=10)
+    slug = models.SlugField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
-        ordering = ['-name']
+        ordering = ['-id']
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Products(models.Model):
@@ -68,3 +70,19 @@ def unique_slug_generator_reciever(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(unique_slug_generator_reciever, sender=Products)
+
+
+def unique_category_slug_generator_reciever(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(unique_category_slug_generator_reciever, sender=Category)
+
+
+def unique_slug_generator_member_reciever(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = random.randint(1254, 645465)
+
+
+pre_save.connect(unique_slug_generator_member_reciever, sender=Member)
