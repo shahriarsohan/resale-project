@@ -1,11 +1,10 @@
 import React from "react";
-import Topsongs from "./Topsongs";
-import SearchMusic from "./Search";
+import UserList from "./UserList";
 
 const Index = () => {
   return (
     <>
-      <Topsongs />
+      <UserList />
       {/* <SearchMusic /> */}
     </>
   );

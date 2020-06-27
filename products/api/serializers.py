@@ -30,6 +30,7 @@ class MemberSerializers(serializers.ModelSerializer):
         model = Member
         depth = 1
         fields = [
+            'id',
             'user',
             'member',
             'slug'

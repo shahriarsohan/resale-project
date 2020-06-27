@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import topsongs from "./songs";
+import usersList from "./songs";
 
 export default combineReducers({
-  topsongs: topsongs,
+  usersList,
 });

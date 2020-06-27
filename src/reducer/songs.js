@@ -1,15 +1,20 @@
-import _ from "lodash";
-
 import * as actionTypes from "../action/Types";
 
-export default (state = {}, action) => {
+const initialState = {
+  data: [],
+  loading: true,
+  error: {},
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.TOP_SONGS:
-      const newSongs = {
+    case actionTypes.FETCH_USERS:
+      return {
         ...state,
-        ...action.payload,
+        data: action.payload,
+        loading: false,
       };
-      return { ...state, Topsongs: newSongs };
+
     default:
       return state;
   }
