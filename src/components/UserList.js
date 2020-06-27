@@ -21,13 +21,13 @@ class Topsongs extends React.Component {
             <h1>hello</h1>
           </div>
         )}
-        {usersList.map((u) => {
+        {/* {usersList.map((u) => {
           return (
             <div>
               <h1>{u.user.email}</h1>
             </div>
           );
-        })}
+        })} */}
       </div>
     );
   }

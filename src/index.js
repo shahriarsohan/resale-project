@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import reducer from "./reducer/index";
 import App from "./App";
 
+import "./style/main.css";
+
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhances(applyMiddleware(thunk)));

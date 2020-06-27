@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./container/Navbar";
 
 import Index from "./components/Index";
+import AllProductsList from "./components/AllProducts/AllProducts";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
         <Navbar />
         <div className="container">
           <Switch>
-            <Route exact path="/" component={Index} />
+            <Route exact path="/" component={AllProductsList} />
           </Switch>
         </div>
       </>

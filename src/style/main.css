@@ -1,0 +1,86 @@
+/* variables */
+
+:root {
+  --main-color: #f4f6ff;
+  --secondary-color: #feceab;
+  --logo-color: #092532;
+}
+
+/* navbar */
+.nav-area {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  z-index: 10;
+  background: #ddf3f57c;
+}
+.header-inner {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Playfair Display", "Poppins";
+  font-weight: bolder;
+  font-size: 2rem;
+  color: var(--logo-color);
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  padding: 1rem;
+  color: #ea907a;
+  font-size: 18px;
+  font-family: sans-serif;
+  transition: color 1 ease-in-out;
+}
+
+.navbar-links li a:hover {
+  color: #323232;
+  font-size: 20px;
+}
+
+.auth-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-cta {
+  border: 1px solid #f3558700;
+  padding: 1rem;
+  border-radius: 100px;
+  background-color: #3232320e;
+  transition: 0.5 ease-in-out;
+}
+
+.login-cta a {
+  text-decoration: none;
+  padding: 1rem;
+  color: #ea907a;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.login-cta:hover,
+.login-cta:active {
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+  -webkit-box-shadow: -7px 8px 43px 0px rgba(87, 63, 87, 1);
+  -moz-box-shadow: -7px 8px 43px 0px rgba(87, 63, 87, 1);
+  box-shadow: -7px 8px 43px 0px rgba(87, 63, 87, 1);
+}
+
+/* x navbar */
