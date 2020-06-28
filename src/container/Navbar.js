@@ -1,44 +1,65 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { render } from "@testing-library/react";
 
-const Navbar = () => {
-  return (
-    <section className="nav-area">
-      <div className="container">
-        <div className="header-inner">
-          <div className="logo">Sell.</div>
+class Header extends React.Component {
+  state = {
+    isToggle: false,
+  };
 
-          <nav>
-            <ul className="navbar-links">
-              <li className="navbar-link">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="navbar-link">
-                <Link to="/">Services</Link>
-              </li>
-              <li className="navbar-link">
-                <Link to="/">About</Link>
-              </li>
-              <li className="navbar-link">
-                <Link to="/">Contact</Link>
-              </li>
-              <li className="navbar-link">
-                <Link to="/">Contact</Link>
-              </li>
-            </ul>
-          </nav>
-          <div className="auth-area">
-            <div className="login-cta">
-              <Link to="/">Login</Link>
-            </div>
-            <div className="login-cta">
-              <Link to="/">Sign Up</Link>
+  toggleHandle = () => {
+    this.setState({
+      isToggle: !this.state.isToggle,
+    });
+  };
+
+  render() {
+    return (
+      <section className="nav-area">
+        <div className="container">
+          <div className="header-inner">
+            <div className="logo">Sell.</div>
+
+            <nav>
+              <ul className="navbar-links">
+                <li className="navbar-link">
+                  <Link to="/">
+                    <i class="fad fa-home"></i>
+                  </Link>
+                </li>
+                <li className="navbar-link">
+                  <Link to="/">
+                    <i class="fad fa-search-plus"></i>
+                  </Link>
+                </li>
+                <li className="navbar-link">
+                  <Link to="/">
+                    <i class="fad fa-id-card-alt"></i>
+                  </Link>
+                </li>
+
+                <li className="navbar-link">
+                  <Link to="/">
+                    <i class="fad fa-sun"></i>
+                  </Link>
+                </li>
+                <li className="navbar-link">
+                  <Link to="/">
+                    <i class="fal fa-moon"></i>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <div className="auth-area">
+              <Link to="/">
+                <i class="fad fa-user-alt"></i>
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </section>
+    );
+  }
+}
 
-export default Navbar;
+export default Header;

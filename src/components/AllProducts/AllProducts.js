@@ -13,7 +13,7 @@ class AllProductsList extends React.Component {
     console.log(this.props.products);
     return (
       <div>
-        <h1>hello baby</h1>
+        <h1></h1>
       </div>
     );
   }
