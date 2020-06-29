@@ -1,6 +1,10 @@
 import api from "../api/api";
 
-import { FetchUsersList, FetchAllProductsList } from "../constant";
+import {
+  FetchUsersList,
+  FetchAllProductsList,
+  FeaturedProductsList,
+} from "../constant";
 import * as actionTypes from "./Types";
 
 export const fetchUsersList = () => (dispatch) => {
@@ -28,5 +32,22 @@ export const fetchAllProductsList = () => (dispatch) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+export const fetchFeaturedProducts = () => (dispatch) => {
+  api
+    .get(FeaturedProductsList)
+    .then((res) => {
+      dispatch({
+        type: actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST_ERROR,
+        payload: err.message,
+      });
     });
 };

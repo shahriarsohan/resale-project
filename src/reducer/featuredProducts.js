@@ -22,10 +22,10 @@ const fetchSuccess = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_ALL_PRODUCTS_LIST:
+    case actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST:
       return fetchSuccess(state, action);
-    // case actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST_ERROR:
-    //   return fetchFails(state, action);
+    case actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST_ERROR:
+      return fetchFails(state, action);
     default:
       return state;
   }

@@ -30,3 +30,8 @@ class MembersListAPIView(ListAPIView):
 class ProductsListAPIView(ListAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializers
+
+
+class FeaturedProductsListView(ListAPIView):
+    queryset = Products.objects.filter(featured=True)
+    serializer_class = ProductsSerializers

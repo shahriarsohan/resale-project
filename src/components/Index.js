@@ -1,11 +1,15 @@
 import React from "react";
-import UserList from "./UserList";
+import FeaturedProducts from "../components/AllProducts/FeaturedProducts";
+import AllProductsList from "../components/AllProducts/AllProducts";
+
+import Title from "../container/Title";
 
 const Index = () => {
   return (
     <>
-      <UserList />
-      {/* <SearchMusic /> */}
+      <FeaturedProducts />
+      {/* <AllProductsList /> */}
+      <Title />
     </>
   );
 };

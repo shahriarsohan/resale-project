@@ -10,17 +10,24 @@ class AllProductsList extends React.Component {
   }
 
   render() {
-    console.log(this.props.products);
+    const { products, error, loading } = this.props;
+    console.log(products);
     return (
       <div>
-        <h1></h1>
+        {products.map((p) => {
+          return <h1>{p.user.user.email}</h1>;
+        })}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { products: Object.values(state.allProducts.products) };
+  return {
+    products: state.allProducts.data,
+    error: state.allProducts.error,
+    loading: state.allProducts.loading,
+  };
 };
 
 export default connect(mapStateToProps, { fetchAllProductsList })(

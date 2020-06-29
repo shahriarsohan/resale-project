@@ -5,3 +5,4 @@ export const endpoint = `${RootURL}${APIUrl}`;
 
 export const FetchUsersList = `${endpoint}users/list`;
 export const FetchAllProductsList = `${endpoint}products/list`;
+export const FeaturedProductsList = `${endpoint}featured/products/list`;

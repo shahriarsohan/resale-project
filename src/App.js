@@ -10,6 +10,7 @@ import { authCheckState } from "./action/auth";
 import { connect } from "react-redux";
 import Signup from "./components/Auth/SignUp";
 import Profile from "./components/Profile/Profile";
+import Index from "./components/Index";
 
 class App extends Component {
   componentDidMount() {
@@ -23,7 +24,7 @@ class App extends Component {
           <Navbar />
           <div className="container">
             <Switch>
-              <Route exact path="/" component={AllProductsList} />
+              <Route exact path="/" component={Index} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
