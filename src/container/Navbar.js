@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { render } from "@testing-library/react";
 
 class Header extends React.Component {
   state = {
