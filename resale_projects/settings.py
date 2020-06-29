@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_auth.registration',
     'rest_framework.authtoken',
-
+    'allauth.socialaccount.providers.google',
     'rest_auth',
     'corsheaders',
 

@@ -131,6 +131,9 @@ media
 # production
 /build
 .env
+
+
+#as
 # misc
 .DS_Store
 .env.local
