@@ -5,8 +5,11 @@ import Navbar from "./container/Navbar";
 
 import AllProductsList from "./components/AllProducts/AllProducts";
 import Login from "./components/Auth/Login";
+
 import { authCheckState } from "./action/auth";
 import { connect } from "react-redux";
+import Signup from "./components/Auth/SignUp";
+import Profile from "./components/Profile/Profile";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +25,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={AllProductsList} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile" component={Profile} />
             </Switch>
           </div>
         </>

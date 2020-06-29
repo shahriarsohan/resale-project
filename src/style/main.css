@@ -91,3 +91,43 @@
 }
 
 /* x navbar */
+
+/* login-area */
+.login-area {
+  padding: 0 100px;
+}
+
+.avator-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem;
+  font-size: 10rem;
+  color: #fc9d9d;
+}
+
+.login-heading-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  font-size: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #fc9d9d;
+}
+
+.extra-area {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+.extra-area p {
+  padding-left: 2rem;
+  line-height: 30px;
+}
+
+.login-form {
+}
+
+/* x login-area */

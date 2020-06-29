@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import { authLogin } from "../../action/auth";
 
-class LoginForm extends React.Component {
+import { authSignup } from "../../action/auth";
+
+class Signup extends Component {
   state = {
     email: "",
     password: "",
+    password1: "",
   };
 
   handleChange = (e) => {
@@ -15,23 +17,23 @@ class LoginForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
-    this.props.login(email, password);
+    const { email, password, password1 } = this.state;
+    this.props.signup(email, password, password1);
   };
 
   render() {
+    const { email, password, password1 } = this.state;
     const { error, loading, token } = this.props;
-    const { email, password } = this.state;
     if (token) {
       return <Redirect to="/" />;
     }
     return (
       <div className="login-area">
         <div className="avator-area">
-          <i class="fas fa-user"></i>
+          <i className="fas fa-user"></i>
         </div>
         <div className="login-heading-area">
-          <p>Login with valid credentials</p>
+          <p>Fill the form for an account</p>
         </div>
         {error && (
           <div class="alert alert-dangers text-center" role="alert">
@@ -74,18 +76,34 @@ class LoginForm extends React.Component {
               aria-describedby="basic-addon1"
             />
           </div>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="basic-addon1">
+                Re-type passwrod
+              </span>
+            </div>
+            <input
+              onChange={this.handleChange}
+              name="password1"
+              value={password1}
+              type="password"
+              className="form-control"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
 
           <div className="extra-area">
-            <button type="submit" class="btn btn-success">
+            <button type="submit" className="btn btn-success">
               {loading && (
-                <div class="spinner-border text-success" role="status">
-                  <span class="sr-only">Loading...</span>
+                <div className="spinner-border text-success" role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
               )}
-              Login
+              Sigh up
             </button>
             <p>
-              Don't have an account? <Link to="/signup">Sign up here</Link>
+              Already have an account? <Link to="/login">Login here</Link>
             </p>
           </div>
         </form>
@@ -104,8 +122,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(authLogin(email, password)),
+    signup: (email, password, password1) =>
+      dispatch(authSignup(email, password, password1)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
