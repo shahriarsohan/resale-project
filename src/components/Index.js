@@ -1,6 +1,6 @@
 import React from "react";
-import FeaturedProducts from "../components/AllProducts/FeaturedProducts";
-import AllProductsList from "../components/AllProducts/AllProducts";
+import FeaturedProducts from "../components/Products/FeaturedProducts";
+import AllProductsList from "../components/Products/AllProducts";
 
 import Title from "../container/Title";
 

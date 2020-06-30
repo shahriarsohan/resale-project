@@ -5,6 +5,8 @@ import { fetchFeaturedProducts } from "../../action";
 
 import Title from "../../container/Title";
 
+import ProductsList from "./ProductsList";
+
 class FeaturedProducts extends Component {
   componentDidMount() {
     this.props.fetchFeaturedProducts();
@@ -16,13 +18,21 @@ class FeaturedProducts extends Component {
     return (
       <div>
         <Title title="Featured Products" />
-        {/* {featuredProducts.map((fp) => {
+        {featuredProducts.map((fp) => {
           return (
             <>
-              <h1>{fp.user.user.email}</h1>
+              <ProductsList
+                image={fp.image}
+                title={fp.title}
+                timestamp={fp.timestamp}
+                used={fp.used}
+                description={fp.description}
+                used_duration={fp.used_duration}
+                slug={fp.slug}
+              />
             </>
           );
-        })} */}
+        })}
         {error}
         {loading && <h1>hello</h1>}
       </div>

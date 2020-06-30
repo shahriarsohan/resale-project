@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./container/Navbar";
 
-import AllProductsList from "./components/AllProducts/AllProducts";
+import AllProductsList from "./components/Products/AllProducts";
 import Login from "./components/Auth/Login";
 
 import { authCheckState } from "./action/auth";
