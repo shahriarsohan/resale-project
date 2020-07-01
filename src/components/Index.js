@@ -1,15 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import FeaturedProducts from "../components/Products/FeaturedProducts";
-import AllProductsList from "../components/Products/AllProducts";
-
-import Title from "../container/Title";
+import ProductsList from "../components/Products/LatestProducts";
+import NextButton from "../container/NextButton";
 
 const Index = () => {
   return (
     <>
       <FeaturedProducts />
-      {/* <AllProductsList /> */}
-      <Title />
+      <NextButton title="More" />
+      <ProductsList />
+      <NextButton title="More" />
+      <br />
     </>
   );
 };

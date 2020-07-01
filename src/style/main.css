@@ -195,3 +195,49 @@
 }
 
 /* x products-list-area */
+
+/* products detals area */
+
+.products-image {
+  /* border: 2px solid rgba(48, 46, 46, 0.034);
+  box-shadow: 3px -1px 5px 5px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: 3px -1px 5px 5px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 3px -1px 5px 5px rgba(0, 0, 0, 0.66); */
+}
+
+.products-title {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.member {
+  display: inline-block;
+  border: 1px solid rgba(255, 0, 0, 0);
+  background-color: #fbfd8a;
+  line-height: 0px;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.price-area {
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+  color: #e43f5a;
+}
+
+.price-area p {
+  margin-left: 10px;
+}
+
+.description-box {
+  -webkit-box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* .product-details-area.table {
+  display: flex;
+  justify-content: center;
+} */
+
+/* x products detals area */

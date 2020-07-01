@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import Signup from "./components/Auth/SignUp";
 import Profile from "./components/Profile/Profile";
 import Index from "./components/Index";
-
+import FeaturedProductsDetails from "./components/Products/ProductsDetails";
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignUp();
@@ -28,6 +28,11 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
+              <Route
+                exact
+                path="/details/:slug"
+                component={FeaturedProductsDetails}
+              />
             </Switch>
           </div>
         </>

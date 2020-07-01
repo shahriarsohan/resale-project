@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import { fetchFeaturedProducts } from "../../action";
-
-import Title from "../../container/Title";
+import { fetchAllProductsList } from "../../action/index";
 
 import ProductsList from "./ProductsList";
+import Title from "../../container/Title";
 
-class FeaturedProducts extends Component {
+class LatestProducts extends Component {
   componentDidMount() {
-    this.props.fetchFeaturedProducts();
+    this.props.fetchAllProductsList();
   }
 
   render() {
-    const { featuredProducts, error, loading } = this.props;
-    console.log(this.props.featuredProducts);
+    const { latestProducts, error, loading } = this.props;
     return (
-      <div>
-        <Title title="Featured Products" />
+      <React.Fragment>
+        <Title title="Latest Products" />
         {error && (
           <div class="alert alert-danger text-center" role="alert">
             {error}
@@ -28,7 +26,7 @@ class FeaturedProducts extends Component {
             <div class="spinner-border text-success " role="status"></div>
           </div>
         )}
-        {featuredProducts.map((fp) => {
+        {latestProducts.map((fp) => {
           return (
             <div key={fp.slug}>
               <ProductsList
@@ -43,19 +41,19 @@ class FeaturedProducts extends Component {
             </div>
           );
         })}
-      </div>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    featuredProducts: state.feturedProducts.data,
-    error: state.feturedProducts.error,
-    loading: state.feturedProducts.loading,
+    latestProducts: state.allProducts.data,
+    loading: state.allProducts.loading,
+    error: state.allProducts.error,
   };
 };
 
-export default connect(mapStateToProps, { fetchFeaturedProducts })(
-  FeaturedProducts
+export default connect(mapStateToProps, { fetchAllProductsList })(
+  LatestProducts
 );

@@ -10,6 +10,7 @@ const initialState = {
 const fetchFails = (state, action) => {
   return updateObject(state, {
     error: action.payload,
+    loading: false,
   });
 };
 
@@ -25,6 +26,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST:
       return fetchSuccess(state, action);
     case actionTypes.FETCH_ALL_FEATURED_PRODUCTS_LIST_ERROR:
+      return fetchFails(state, action);
+    case actionTypes.FETCH_FEATURED_PRODUCTS_DETAILS:
+      return fetchSuccess(state, action);
+    case actionTypes.FETCH_FEATURED_PRODUCTS_DETAILS_ERROR:
       return fetchFails(state, action);
     default:
       return state;
