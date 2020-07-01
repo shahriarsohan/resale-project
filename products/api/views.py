@@ -64,14 +64,32 @@ class FeaturedProductsFilter(APIView):
         serializer = ProductsSerializers(data, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
 
+    # def post(self, request, *args, **kwargs):
+    #     title = request.data.get('title', None)
+    #     category = request.data.get('category', None)
+    #     area = request.data.get('thana', None)
+    #     zilla = request.data.get('zilla', None)
+    #     used = request.data.get('used', None)
+
+    #     filter = Products.objects.get(Q(title__icontains=title) | Q(category__icontains=category) | Q(
+    #         area__iexact=area) | Q(zilla__iexact=zilla) | Q(used=used))
+    #     serializer = ProductsSerializers(filter, many=True)
+    #     return Response(serializer.data, status=HTTP_200_OK)
+
     def post(self, request, *args, **kwargs):
         title = request.data.get('title', None)
         category = request.data.get('category', None)
-        area = request.data.get('thana', None)
+        thana = request.data.get('thana', None)
         zilla = request.data.get('zilla', None)
         used = request.data.get('used', None)
 
-        filter = Products.objects.get(Q(title__icontains=title) | Q(category__icontains=category) | Q(
-            area__iexact=area) | Q(zilla__iexact=zilla) | Q(used=used))
-        serializer = ProductsSerializers(filter, many=True)
+        data = Products.objects.filter(
+            title__icontains=title,
+            category__icontains=category,
+            thana__iexact=thana,
+            zilla__iexact=zilla,
+
+        )
+
+        serializer = ProductsSerializers(data, many=True)
         return Response(serializer.data, status=HTTP_200_OK)

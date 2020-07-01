@@ -31,6 +31,8 @@ const reducer = (state = initialState, action) => {
       return fetchSuccess(state, action);
     case actionTypes.FETCH_FEATURED_PRODUCTS_DETAILS_ERROR:
       return fetchFails(state, action);
+    case actionTypes.FILTER_FEATURED_PRODUCTS:
+      return fetchSuccess(state, action);
     default:
       return state;
   }

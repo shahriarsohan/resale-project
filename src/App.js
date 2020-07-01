@@ -12,6 +12,8 @@ import Signup from "./components/Auth/SignUp";
 import Profile from "./components/Profile/Profile";
 import Index from "./components/Index";
 import FeaturedProductsDetails from "./components/Products/ProductsDetails";
+import FeaturedFilter from "./components/filter/FilterResults";
+
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignUp();
@@ -33,6 +35,7 @@ class App extends Component {
                 path="/details/:slug"
                 component={FeaturedProductsDetails}
               />
+              <Route exact path="/more" component={FeaturedFilter} />
             </Switch>
           </div>
         </>
