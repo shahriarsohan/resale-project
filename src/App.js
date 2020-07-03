@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./container/Navbar";
 
-import AllProductsList from "./components/Products/AllProducts";
 import Login from "./components/Auth/Login";
 
 import { authCheckState } from "./action/auth";
@@ -12,7 +11,7 @@ import Signup from "./components/Auth/SignUp";
 import Profile from "./components/Profile/Profile";
 import Index from "./components/Index";
 import FeaturedProductsDetails from "./components/Products/ProductsDetails";
-import FeaturedFilter from "./components/filter/FilterResults";
+import FeaturedFilter from "./components/filter/FeaturedFilter/FilterResults";
 
 class App extends Component {
   componentDidMount() {

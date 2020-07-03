@@ -3,14 +3,7 @@ import { connect } from "react-redux";
 
 import { Field, reduxForm } from "redux-form";
 
-import { fetchFilterFeaturedProducts } from "../../action/index";
-
 class FeaturedProducts extends Component {
-  // handleSubmit = (formValues, event) => {
-  //   event.preventDefault();
-  //   this.props.fetchFilterFeaturedProducts(formValues);
-  // };
-
   render() {
     const { handleSubmit } = this.props;
     console.log(handleSubmit);
@@ -41,7 +34,7 @@ class FeaturedProducts extends Component {
             name="zilla"
             placeholder="zilla"
           />
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary mt-4" type="submit">
             Filter
           </button>
         </form>
@@ -54,4 +47,4 @@ const ReactWidgetsForm = reduxForm({
   form: "reactWidgets", // a unique identifier for this form
 })(FeaturedProducts);
 
-export default connect(null, { fetchFilterFeaturedProducts })(ReactWidgetsForm);
+export default connect(null, {})(ReactWidgetsForm);

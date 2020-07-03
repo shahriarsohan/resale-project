@@ -3,7 +3,7 @@ import random
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import RegexValidator
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 
 from resale_projects.utils import unique_slug_generator
 
@@ -16,8 +16,10 @@ Here i will add custom model manager for advanced custom query
 
 class Member(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=20, blank=True, null=True)
     member = models.BooleanField(default=False, blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
+    remember_data = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.email
@@ -70,3 +72,11 @@ def unique_slug_generator_member_reciever(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(unique_slug_generator_member_reciever, sender=Member)
+
+
+def member_profile_creator(sender, instance, created, *args, **kwargs):
+    if created:
+        memberprofile = Member.objects.create(user=instance)
+
+
+post_save.connect(member_profile_creator, sender=User)

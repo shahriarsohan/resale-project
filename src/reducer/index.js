@@ -6,7 +6,7 @@ import auth from "./auth";
 import feturedProducts from "./featuredProducts";
 
 export default combineReducers({
-  formReducer: formReducer,
+  form: formReducer,
   usersList,
   allProducts,
   auth,
