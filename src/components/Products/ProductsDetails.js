@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+
+import { connect } from "react-redux";
 import api from "../../api/api";
-import { FetchAllProductDetails } from "../../constant";
+import { FetchAllProductDetails, AddToCart } from "../../constant";
 
 import Title from "../../container/Title";
 
@@ -12,6 +14,11 @@ class ProductsDetail extends Component {
     error: null,
     loading: true,
   };
+
+  componentDidMount() {
+    this.handleFetchItem();
+  }
+
   handleFetchItem = () => {
     const {
       match: { params },
@@ -35,13 +42,26 @@ class ProductsDetail extends Component {
         });
       });
   };
-  data;
-  componentDidMount() {
-    this.handleFetchItem();
-  }
+
+  handleAddToCart = (slug) => {
+    api
+      .post(AddToCart, { slug })
+      .then((res) => {
+        this.setState({
+          loading: false,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          err: err,
+          loading: false,
+        });
+      });
+  };
 
   render() {
-    const { data, userdata, moreuserdata } = this.state;
+    const { data, slug, userdata, moreuserdata } = this.state;
+    console.log(slug);
     console.log(moreuserdata);
     console.log(data);
     return (
@@ -80,7 +100,11 @@ class ProductsDetail extends Component {
               )}
             </div>
             <div className="add-cart">
-              <button className="btn btn-primary">
+              <button
+                // type="submit"
+                onClick={() => this.handleAddToCart(data.slug)}
+                className="btn btn-primary"
+              >
                 Add to cart<i class="cart fad fa-cart-plus"></i>
               </button>
             </div>

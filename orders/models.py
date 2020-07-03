@@ -13,3 +13,17 @@ class OrderItem(models.Model):
         if self.user.username is None:
             return f"{self.user.user.email} ordered {self.item.title}"
         return f"{self.user.username} ordered {self.item.title}"
+
+
+class Order(models.Model):
+    user = models.ForeignKey(Member, on_delete=models.CASCADE)
+    item = models.ForeignKey(OrderItem, on_delete=models.CASCADE)
+    start_date = models.DateTimeField(auto_now_add=True)
+    ordered_date = models.DateTimeField()
+    ordered = models.BooleanField(default=False)
+    delivered = models.BooleanField(default=False)
+
+    def __str__(self):
+        if self.user.username is None:
+            return f"{self.user.user.email} ordered {self.item.item.title}"
+        return f"{self.user.username} ordered {self.item.item.title}"

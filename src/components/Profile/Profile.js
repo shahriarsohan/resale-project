@@ -8,7 +8,7 @@ class Profile extends Component {
     if (!token) {
       return <Redirect to="/login" />;
     }
-    return <h1>Profile</h1>;
+    return <h1>Profile => {this.props.token}</h1>;
   }
 }
 

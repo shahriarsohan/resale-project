@@ -10,3 +10,5 @@ export const FetchAllProductDetails = (slug) =>
   `${endpoint}featured/products/details/${slug}`;
 
 export const FeaturedFilter = `${endpoint}featured/products/filter`;
+
+export const AddToCart = `${endpoint}order/add-to-cart`;

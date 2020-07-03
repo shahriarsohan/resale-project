@@ -22,7 +22,7 @@ class Member(models.Model):
     remember_data = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.email
+        return self.user.id
 
 
 class Products(models.Model):

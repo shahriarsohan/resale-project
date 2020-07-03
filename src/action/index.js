@@ -5,6 +5,7 @@ import {
   FetchAllProductsList,
   FeaturedProductsList,
   FeaturedFilter,
+  AddToCart,
 } from "../constant";
 import * as actionTypes from "./Types";
 
