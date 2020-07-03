@@ -26,7 +26,7 @@ class Member(models.Model):
 class Products(models.Model):
     user = models.ForeignKey(Member, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
-    category = models.CharField(max_length=20)
+    category = models.CharField(max_length=20, blank=True, null=True)
     description = models.TextField(max_length=255)
     slug = models.SlugField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True,

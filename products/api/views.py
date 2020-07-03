@@ -64,32 +64,29 @@ class FeaturedProductsFilter(APIView):
         serializer = ProductsSerializers(data, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
 
-    # def post(self, request, *args, **kwargs):
-    #     title = request.data.get('title', None)
-    #     category = request.data.get('category', None)
-    #     area = request.data.get('thana', None)
-    #     zilla = request.data.get('zilla', None)
-    #     used = request.data.get('used', None)
-
-    #     filter = Products.objects.get(Q(title__icontains=title) | Q(category__icontains=category) | Q(
-    #         area__iexact=area) | Q(zilla__iexact=zilla) | Q(used=used))
-    #     serializer = ProductsSerializers(filter, many=True)
-    #     return Response(serializer.data, status=HTTP_200_OK)
-
     def post(self, request, *args, **kwargs):
         title = request.data.get('title', None)
         category = request.data.get('category', None)
         thana = request.data.get('thana', None)
         zilla = request.data.get('zilla', None)
-        used = request.data.get('used', None)
+        product_price_from = request.data.get('product_price_from', None)
+        product_price_to = request.data.get('product_price_to', None)
 
-        data = Products.objects.filter(
-            title__icontains=title,
-            category__icontains=category,
-            thana__iexact=thana,
-            zilla__iexact=zilla,
+        if product_price_from is None:
+            product_price_from = int(0)
 
+        if product_price_to is None:
+            product_price_to = int(10000000000)
+
+        filter = Products.objects.filter(
+            Q(featured=True),
+            Q(title__contains=title),
+            Q(category__iexact=category) |
+            Q(thana__iexact=thana) |
+            Q(zilla=zilla) |
+            Q(product_price__gte=product_price_from) |
+            Q(product_price__lte=product_price_to)
         )
-
-        serializer = ProductsSerializers(data, many=True)
+        serializer = ProductsSerializers(filter, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
+# Tip : icontains doesnot work with None values
