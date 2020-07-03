@@ -46,12 +46,13 @@ class ProductsDetail extends Component {
   handleAddToCart = (slug) => {
     api
       .post(AddToCart, { slug })
-      .then((res) => {
+      .then(() => {
         this.setState({
           loading: false,
         });
       })
       .catch((err) => {
+        console.log(err);
         this.setState({
           err: err,
           loading: false,
@@ -60,9 +61,7 @@ class ProductsDetail extends Component {
   };
 
   render() {
-    const { data, slug, userdata, moreuserdata } = this.state;
-    console.log(slug);
-    console.log(moreuserdata);
+    const { data, userdata, moreuserdata } = this.state;
     console.log(data);
     return (
       <>
@@ -99,6 +98,7 @@ class ProductsDetail extends Component {
                 </p>
               )}
             </div>
+            {/* {this.props.token && ( */}
             <div className="add-cart">
               <button
                 // type="submit"
@@ -108,6 +108,7 @@ class ProductsDetail extends Component {
                 Add to cart<i class="cart fad fa-cart-plus"></i>
               </button>
             </div>
+            {/* )} */}
           </div>
         </div>
         <hr />
@@ -178,4 +179,12 @@ class ProductsDetail extends Component {
   }
 }
 
-export default ProductsDetail;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error,
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(ProductsDetail);

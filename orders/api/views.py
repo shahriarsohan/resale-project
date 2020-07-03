@@ -1,8 +1,9 @@
 
 from django.shortcuts import get_object_or_404
 
-from rest_framework.views import APIView
+from rest_framework.views import APIView, View
 from rest_framework.generics import (
+    CreateAPIView,
     ListAPIView
 )
 
@@ -32,28 +33,28 @@ from orders.models import (
 )
 
 
-class AddToCartAPIView(APIView):
+class AddToCartAPIView(CreateAPIView):
     def post(self, request, *args, **kwargs):
         print(request.user.is_authenticated)
-        # slug = request.data.get('slug', None)
-        # if slug is None:
-        #     return Response({"message": "Somthing went wrong"}, status=HTTP_400_BAD_REQUEST)
-        # item = get_object_or_404(Products, slug=slug)
-        # order_item_qs = OrderItem.objects.filter(
-        #     item=item,
-        #     user=request.user.member,
-        #     ordered=False
-        # )
+        slug = request.data.get('slug', None)
+        if slug is None:
+            return Response({"message": "Somthing went wrong"}, status=HTTP_400_BAD_REQUEST)
+        item = get_object_or_404(Products, slug=slug)
+        order_item_qs = OrderItem.objects.filter(
+            item=item,
+            user=request.user,
+            ordered=False
+        )
 
-        # if order_item_qs.exists():
-        #     order_item = order_item_qs.first()
-        #     order_item.quantity += 1
-        #     order_item.save()
-        # else:
-        #     order_item = OrderItem.objects.create(
-        #         user=request.user,
-        #         item=item,
-        #         ordered=False
-        #     )
-        #     order_item.save()
+        if order_item_qs.exists():
+            order_item = order_item_qs.first()
+            order_item.quantity += 1
+            order_item.save()
+        else:
+            order_item = OrderItem.objects.create(
+                user=request.user,
+                item=item,
+                ordered=False
+            )
+            order_item.save()
         return Response(status=HTTP_200_OK)
